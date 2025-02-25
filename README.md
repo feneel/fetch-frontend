@@ -1,6 +1,10 @@
 # Fetch Dog Adoption Application
 
+## LIVE WEBSITE
+### [https://fetch-frontend-swart.vercel.app/](https://fetch-frontend-swart.vercel.app/)
+
 This project is a React-based web application built as part of the Fetch Frontend Take-Home Exercise. It helps dog lovers search through a database of shelter dogs, filter results by breed, paginate, sort, and select favorite dogs to generate a match for adoption.
+
 
 ## Table of Contents
 
