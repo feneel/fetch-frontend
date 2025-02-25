@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# Fetch Dog Adoption Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React-based web application built as part of the Fetch Frontend Take-Home Exercise. It helps dog lovers search through a database of shelter dogs, filter results by breed, paginate, sort, and select favorite dogs to generate a match for adoption.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [API Endpoints](#api-endpoints)
+- [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **User Authentication:**  
+  Users log in using their name and email. The app sends a POST request to the `/auth/login` endpoint, which sets an HttpOnly cookie for authenticated sessions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Dog Search:**  
+  - **Filtering by Breed:**  
+    Users can filter search results using a dropdown populated with breeds from the `/dogs/breeds` endpoint.
+  - **Pagination:**  
+    Results are paginated with "Previous" and "Next" buttons, using query parameters (`size` and `from`) from the `/dogs/search` endpoint.
+  - **Sorting:**  
+    Results are sorted by breed alphabetically by default. Users can toggle between ascending and descending sort order.
+  - **Dog Details:**  
+    Every dog card displays all relevant fields (image, name, age, zip code, and breed).
 
-### `npm test`
+- **Favorites & Matching:**  
+  Users can add or remove dogs from their favorites list. When ready, clicking "Generate Match" sends the selected dog IDs to the `/dogs/match` endpoint to generate a match for adoption.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Clean and Responsive Styling:**  
+  The application uses simple, modular CSS to ensure a clean and user-friendly interface.
 
-### `npm run build`
+## API Endpoints
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application interacts with the following endpoints from the Fetch backend service (base URL: `https://frontend-take-home-service.fetch.com`):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Authentication**
+  - `POST /auth/login`: Logs in a user and sets an auth cookie.
+  - `POST /auth/logout`: Logs out a user and invalidates the auth cookie.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Dogs**
+  - `GET /dogs/breeds`: Retrieves an array of available dog breeds.
+  - `GET /dogs/search`: Searches for dogs based on filters such as breed, pagination (`size` and `from`), and sorting (`sort=breed:asc|desc`).
+  - `POST /dogs`: Fetches full dog objects for a list of dog IDs.
+  - `POST /dogs/match`: Generates a match from an array of favorite dog IDs.
 
-### `npm run eject`
+- **Locations (Optional)**
+  - `POST /locations`: Retrieves location details based on ZIP codes.
+  - `POST /locations/search`: Searches for locations based on various criteria.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Prerequisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Node.js** (v12 or later)
+- **npm** or **yarn**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Steps
 
-## Learn More
+1. **Clone the Repository:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone <repository-url>
